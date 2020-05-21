@@ -89,6 +89,11 @@ RUN ./configure --user=www --group=www --prefix=/usr/local/nginx \
 RUN /usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf
 RUN ln -s /usr/local/nginx/sbin/* /usr/local/sbin/
 
+RUN rm -rf /usr/local/nginx/conf/nginx.conf
+RUN cp /tmp/nginx-geoip2/tests/nginx.conf /usr/local/nginx/conf/
+RUN cp /tmp/nginx-geoip2/tests/a /usr/local/nginx/html/
+RUN cp /tmp/nginx-geoip2/tests/b /usr/local/nginx/html/
+
 EXPOSE 80 443
 
 CMD ["/usr/local/nginx/sbin/nginx","-g","daemon off;"]
