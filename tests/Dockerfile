@@ -13,8 +13,8 @@ ADD http://nginx.org/download/nginx-1.14.2.tar.gz /tmp/nginx-1.14.2.tar.gz
 #ADD https://github.com/vision5/ngx_devel_kit/archive/v0.3.1.tar.gz /tmp/ngx_devel_kit.tar.gz
 
 # lua-nginx-module rely LuaJIT
-ADD https://github.com/openresty/lua-nginx-module/archive/v0.10.13.tar.gz /tmp/lua-nginx-module.tar.gz
-ADD https://github.com/LuaJIT/LuaJIT/archive/v2.0.5.tar.gz /tmp/LuaJIT.tar.gz
+#ADD https://github.com/openresty/lua-nginx-module/archive/v0.10.13.tar.gz /tmp/lua-nginx-module.tar.gz
+#ADD https://github.com/LuaJIT/LuaJIT/archive/v2.0.5.tar.gz /tmp/LuaJIT.tar.gz
 #ADD https://www.openssl.org/source/openssl-3.0.0-alpha2.tar.gz /tmp/openssl-3.0.0-alpha2.tar.gz
 #ADD https://github.com/FRiCKLE/ngx_cache_purge/archive/2.3.tar.gz  /tmp/ngx_cache_purge.tar.gz
 #ADD https://github.com/alibaba/nginx-http-concat/archive/1.2.2.tar.gz  /tmp/nginx-http-concat.tar.gz
@@ -22,15 +22,15 @@ ADD https://github.com/LuaJIT/LuaJIT/archive/v2.0.5.tar.gz /tmp/LuaJIT.tar.gz
 WORKDIR  /tmp
 
 # install LuaJIT
-RUN mkdir /tmp/LuaJIT && tar xf LuaJIT.tar.gz -C /tmp/LuaJIT --strip-components 1
-WORKDIR  /tmp/LuaJIT
-RUN make PREFIX=/usr/local/luajit
-RUN make install PREFIX=/usr/local/luajit
+#RUN mkdir /tmp/LuaJIT && tar xf LuaJIT.tar.gz -C /tmp/LuaJIT --strip-components 1
+#WORKDIR  /tmp/LuaJIT
+#RUN make PREFIX=/usr/local/luajit
+#RUN make install PREFIX=/usr/local/luajit
 
 # Unzip lua-nginx-module
-WORKDIR  /tmp
-RUN mkdir /tmp/lua-nginx-module && tar xf lua-nginx-module.tar.gz -C /tmp/lua-nginx-module --strip-components 1
-RUN cp -r lua-nginx-module/ /usr/local/src/
+#WORKDIR  /tmp
+#RUN mkdir /tmp/lua-nginx-module && tar xf lua-nginx-module.tar.gz -C /tmp/lua-nginx-module --strip-components 1
+#RUN cp -r lua-nginx-module/ /usr/local/src/
 
 # Unzip OpenSSL
 #WORKDIR  /tmp
@@ -74,7 +74,7 @@ WORKDIR /tmp/nginx
 RUN ./configure --user=www --group=www --prefix=/usr/local/nginx \
 #--with-openssl=/usr/local/src/openssl-3.0.0-alpha2 \
 #--add-module=/usr/local/src/ngx_devel_kit \
---add-module=/usr/local/src/lua-nginx-module \
+#--add-module=/usr/local/src/lua-nginx-module \
 #--add-module=/usr/local/src/ngx_cache_purge \
 --add-module=/usr/local/src/ngx_http_geoip2_module \
 #--with-http_stub_status_module --with-http_ssl_module \
