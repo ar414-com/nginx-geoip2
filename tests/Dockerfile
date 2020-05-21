@@ -62,9 +62,9 @@ WORKDIR /tmp/nginx-geoip2
 RUN mv ./ngx_http_geoip2_module /usr/local/src/
 RUN tar -zxvf GeoLite2-City_20200519.tar.gz
 RUN mkdir -p /usr/local/share/GeoIP/
-RUN mv /tmp/nginx-geoip2/GeoLite2-City_20200519/GeoLite2-City.mmdb /usr/local/share/GeoIP/
+RUN cp /tmp/nginx-geoip2/GeoLite2-City_20200519/GeoLite2-City.mmdb /usr/local/share/GeoIP/
 RUN tar -zxvf GeoLite2-Country_20200519.tar.gz
-RUN mv /tmp/nginx-geoip2/GeoLite2-Country_20200519/GeoLite2-Country.mmdb /usr/local/share/GeoIP/
+RUN cp /tmp/nginx-geoip2/GeoLite2-Country_20200519/GeoLite2-Country.mmdb /usr/local/share/GeoIP/
 # install nginx
 WORKDIR /tmp
 RUN useradd -M -s /sbin/nologin www
@@ -91,8 +91,8 @@ RUN ln -s /usr/local/nginx/sbin/* /usr/local/sbin/
 
 RUN rm -rf /usr/local/nginx/conf/nginx.conf
 RUN cp /tmp/nginx-geoip2/tests/nginx.conf /usr/local/nginx/conf/
-RUN cp /tmp/nginx-geoip2/tests/a /usr/local/nginx/html/
-RUN cp /tmp/nginx-geoip2/tests/b /usr/local/nginx/html/
+RUN mv /tmp/nginx-geoip2/tests/a /usr/local/nginx/html/
+RUN mv /tmp/nginx-geoip2/tests/b /usr/local/nginx/html/
 
 EXPOSE 80 443
 
