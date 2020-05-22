@@ -91,8 +91,8 @@ RUN ln -s /usr/local/nginx/sbin/* /usr/local/sbin/
 
 RUN rm -rf /usr/local/nginx/conf/nginx.conf
 RUN cp /tmp/nginx-geoip2/tests/nginx.conf /usr/local/nginx/conf/
-RUN mv /tmp/nginx-geoip2/tests/a /usr/local/nginx/html/
-RUN mv /tmp/nginx-geoip2/tests/b /usr/local/nginx/html/
+RUN mv /tmp/nginx-geoip2/tests/html/a /usr/local/nginx/html/
+RUN mv /tmp/nginx-geoip2/tests/html/b /usr/local/nginx/html/
 
 EXPOSE 80 443
 
